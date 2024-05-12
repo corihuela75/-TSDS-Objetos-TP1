@@ -22,14 +22,14 @@ namespace TP_Obligatorio_1
             Usando el ejemplo de la biblioteca visto durante la semana en la explicación, el club deportivo
             administra una colección de socios registrados.
      OK     - De los socios, se conoce su nombre y número de identificación.
-            - Cada socio puede participar en un máximo de 3 actividades deportivas simultáneamente.
-            - Cuando un socio se inscribe en una actividad deportiva, se reserva un cupo para él en esa actividad.
+     OK     - Cada socio puede participar en un máximo de 3 actividades deportivas simultáneamente.
+     OK     - Cuando un socio se inscribe en una actividad deportiva, se reserva un cupo para él en esa actividad.
             Es decir, se debe retirar el cupo de la lista de cupos disponibles de la actividad deportiva para
             asignarlo al socio inscripto.
         
         Para hacer:
 
-            - Realizar el UML considerando el ejemplo de la Biblioteca pero incluyendo además los nuevos requerimientos.
+     OK     - Realizar el UML considerando el ejemplo de la Biblioteca pero incluyendo además los nuevos requerimientos.
 
      OK     - Desarrollar el método "altaSocio" que, pasándole los parámetros necesarios, registre a un socio en la
             lista de socios si no estaba previamente registrado.
@@ -63,92 +63,167 @@ namespace TP_Obligatorio_1
 
             // AGREGAMOS 5 ACTIVIDADES AL CLUB
             Console.WriteLine();
-            Console.WriteLine("---> AGREGAMOS 5 ACTIVIDADES AL CLUB");
-            miClub.agregarActividad(1, "Futbol", 2);
-            miClub.agregarActividad(2, "Basquet", 20);
+            Console.WriteLine("---> AGREGAMOS ACTIVIDADES AL CLUB");
+            Console.WriteLine();
+            Console.WriteLine("---> id: 1, PING PONG, Cupo: 2");
+            Console.WriteLine();
+            miClub.agregarActividad(1, "Ping Pong", 2);
+            Console.WriteLine("---> id: 2, FUTBOL, Cupo: 20");
+            Console.WriteLine();
+            miClub.agregarActividad(2, "Futbol", 20);
+            Console.WriteLine("---> id: 3, ZUMBA, Cupo: 50");
+            Console.WriteLine();
             miClub.agregarActividad(3, "Zumba", 50);
+            Console.WriteLine("---> id: 4, FUNCIONAL, Cupo: 40");
+            Console.WriteLine();
             miClub.agregarActividad(4, "Funcional", 40);
+            Console.WriteLine("---> id: 5, PILATES, Cupo: 15");
+            Console.WriteLine();
             miClub.agregarActividad(5, "Pilates", 15);
+            Console.WriteLine("---> id: 6, BASQUET, Cupo: 15");
+            Console.WriteLine();
+            miClub.agregarActividad(6, "Basquet", 15);
 
             // AGREGAMOS UNA ACTIVIDAD REPETIDA PARA COMPROBAR QUE NO NOS DEJE
             Console.WriteLine();
             Console.WriteLine("---> AGREGAMOS UNA ACTIVIDAD REPETIDA PARA COMPROBAR QUE NO NOS DEJE");
-            miClub.agregarActividad(1, "Futbol", 30);
+            Console.WriteLine();
+            Console.WriteLine("---> id: 6, PING PONG, Cupo: 2");
+            Console.WriteLine();
+            miClub.agregarActividad(6, "Ping Pong", 2);
             Console.WriteLine();
 
             // LISTAMOS LAS ACTIVIDADES DEL CLUB
             Console.WriteLine();
             Console.WriteLine("---> LISTAMOS LAS ACTIVIDADES DEL CLUB");
+            Console.WriteLine();
             miClub.listarActividades();
             Console.WriteLine();
 
             // ELIMINAMOS UNA ACTIVIDAD DEL CLUB
             Console.WriteLine();
             Console.WriteLine("---> ELIMINAMOS UNA ACTIVIDAD DEL CLUB");
+            Console.WriteLine();
             miClub.eliminarActividad("Zumba");
             Console.WriteLine();
 
             // VOLVEMOS A LISTAR LAS ACTIVIDADES DEL CLUB
             Console.WriteLine();
             Console.WriteLine("---> VOLVEMOS A LISTAR LAS ACTIVIDADES DEL CLUB");
+            Console.WriteLine();
             miClub.listarActividades();
             Console.WriteLine();
 
             // AGREGAMOS 5 SOCIOS AL CLUB
             Console.WriteLine();
             Console.WriteLine("---> AGREGAMOS 5 SOCIOS AL CLUB");
+            Console.WriteLine();
+            Console.WriteLine("---> id: 1, Cristian Orihuela");
+            Console.WriteLine();
             miClub.altaSocio(1, "Cristian Orihuela");
+            Console.WriteLine();
+            Console.WriteLine("---> id: 2,Jazmin de Valle");
+            Console.WriteLine();
             miClub.altaSocio(2, "Jazmin de Valle");
+            Console.WriteLine();
+            Console.WriteLine("---> id: 3,Hector Cidito");
+            Console.WriteLine();
             miClub.altaSocio(3, "Hector Cidito");
+            Console.WriteLine();
+            Console.WriteLine("---> id: 4,Laura Tanga");
+            Console.WriteLine();
             miClub.altaSocio(4, "Laura Tanga");
+            Console.WriteLine();
+            Console.WriteLine("---> id: 5,Lucas Pozo");
+            Console.WriteLine();
             miClub.altaSocio(5, "Lucas Pozo");
             Console.WriteLine();
 
             // LISTAMOS LOS SOCIOS DEL CLUB
             Console.WriteLine();
             Console.WriteLine("---> LISTAMOS LOS SOCIOS DEL CLUB");
+            Console.WriteLine();
             miClub.listarSocios();
             Console.WriteLine();
 
             // ELIMINAMOS UN SOCIO DEL CLUB
             Console.WriteLine();
             Console.WriteLine("---> ELIMINAMOS UN SOCIO DEL CLUB");
+            Console.WriteLine();
             miClub.eliminarSocio("Lucas Pozo");
             Console.WriteLine();
 
             // VOLVEMOS A LISTAR LOS SOCIOS DEL CLUB
             Console.WriteLine();
             Console.WriteLine("---> VOLVEMOS A LISTAR LOS SOCIOS DEL CLUB");
+            Console.WriteLine();
             miClub.listarSocios();
             Console.WriteLine();
 
-            // INSCRIBIMOS A SOCIOS EN UNA ACTIVIDAD
-            Console.WriteLine("---> INSCRIBIMOS A SOCIOS EN UNA ACTIVIDAD");
+            // INSCRIBIMOS A SOCIOS EN ACTIVIDADES
+            Console.WriteLine("---> INSCRIBIMOS A SOCIOS ACTIVIDADES");
+            Console.WriteLine();
+            Console.WriteLine("---> Socio: 1, BASQUET");
+            Console.WriteLine();
             miClub.inscribirActividad(1, "Basquet");
+            Console.WriteLine();
+            Console.WriteLine("---> Socio: 1, PING PONG");
+            Console.WriteLine();
+            miClub.inscribirActividad(1, "Ping Pong");
+            Console.WriteLine();
+            Console.WriteLine("---> Socio: 2, FUTBOL");
+            Console.WriteLine();
             miClub.inscribirActividad(2, "Futbol");
+            Console.WriteLine();
+            Console.WriteLine("---> Socio: 2, PING PONG");
+            Console.WriteLine();
+            miClub.inscribirActividad(2, "Ping Pong");
+            Console.WriteLine();
+            Console.WriteLine("---> Socio: 3, FUTBOL");
+            Console.WriteLine();
             miClub.inscribirActividad(3, "Futbol");
+            Console.WriteLine();
+            Console.WriteLine("---> Socio: 3, BASQUET");
+            Console.WriteLine();
             miClub.inscribirActividad(3, "Basquet");
+            Console.WriteLine();
+            Console.WriteLine("---> Socio: 3, FUNCIONAL");
+            Console.WriteLine();
             miClub.inscribirActividad(3, "Funcional");
-            // EL CUPO DE FUTBOL ES 2
-            Console.WriteLine("---> EL CUPO DE FUTBOL ES 2");
-            miClub.inscribirActividad(4, "Futbol");
+            Console.WriteLine();
+
+            // EL CUPO DE PING PONG ES 2
+            Console.WriteLine("---> Socio: 4, PING PONG");
+            Console.WriteLine("---> ( EL CUPO DE PING PONG ES 2)");
+            Console.WriteLine();
+            miClub.inscribirActividad(4, "Ping Pong");
+
 
             // INSCRIBIMOS A UN SOCIO EN UN ACTIVIDAD QUE NO EXISTE
             Console.WriteLine();
             Console.WriteLine("---> INSCRIBIMOS A UN SOCIO EN UN ACTIVIDAD QUE NO EXISTE");
-            miClub.inscribirActividad(4, "Futbol 5");
-
-            // INSCRIBIMOS A UN SOCIO EN SU CUARTA ACTIVIDAD
             Console.WriteLine();
-            Console.WriteLine("---> INSCRIBIMOS A UN SOCIO EN SU CUARTA ACTIVIDAD");
+            Console.WriteLine("---> Socio: 4, FUTBOL 5");
+            Console.WriteLine();
+            miClub.inscribirActividad(4, "Futbol 5");
+            Console.WriteLine();
+            // INSCRIBIMOS A UN SOCIO EN SU CUARTA ACTIVIDAD
             
+            Console.WriteLine("---> INSCRIBIMOS A UN SOCIO EN SU CUARTA ACTIVIDAD");
+            Console.WriteLine();
+            Console.WriteLine("---> Socio: 3, pilates");
+            Console.WriteLine();
             miClub.inscribirActividad(3, "Pilates");
+            Console.WriteLine();
 
             // INSCRIBIMOS A UN SOCIO QUE NO EXISTE
             Console.WriteLine();
             Console.WriteLine("---> INSCRIBIMOS A UN SOCIO QUE NO EXISTE");
+            Console.WriteLine();
+            Console.WriteLine("---> Socio: 10, PILATES");
+            Console.WriteLine();
             miClub.inscribirActividad(10, "Pilates");
-
+            Console.WriteLine();
         }
     }
 }

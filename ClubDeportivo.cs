@@ -194,6 +194,7 @@ namespace TP_Obligatorio_1
                     actividadBuscada.agregarActividad(id_socio);
                     socioBuscado.agregarActividad(actividadBuscada);
                     mensajeSistema("OK", "INSCRIPCION EXITOSA");
+                    socioBuscado.listarActividades();
                 }
             }
         }
@@ -205,10 +206,10 @@ namespace TP_Obligatorio_1
             string espacio1 = new string(' ', tam_espacio1);
             int tam_espacio2 = (70 - mensaje2.Length) / 2;
             string espacio2 = new string(' ', tam_espacio2);
-            Console.WriteLine("************************************************************************");
-            Console.WriteLine("*" + espacio1 + mensaje + espacio1 + "*");
-            Console.WriteLine("*" + espacio2 + mensaje2 + espacio2 + "*");
-            Console.WriteLine("************************************************************************");
+            Console.WriteLine("    ************************************************************************");
+            Console.WriteLine("    *" + espacio1 + mensaje + espacio1 + "*");
+            Console.WriteLine("    *" + espacio2 + mensaje2 + espacio2 + "*");
+            Console.WriteLine("    ************************************************************************");
             Console.WriteLine();
         }
 
