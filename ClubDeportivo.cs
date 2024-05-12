@@ -18,9 +18,13 @@ namespace TP_Obligatorio_1
             this.socios = new List<Socio>();
         }
 
+
+
         /*
          *            ACTIVIADES
          */
+
+
 
 
         // BUSCAR ACTIVIDAD DENTRO DE LA LISTA DEL CLUB
@@ -49,7 +53,7 @@ namespace TP_Obligatorio_1
                 mensajeSistema(nombre, "ACTIVIDAD AGREGADA CON EXITO");
                 resultado = true;
             }
-            else { mensajeSistema(nombre, "ERROR ACTIVIDAD YA EXISTE"); }
+            else { mensajeSistema(nombre, " ERROR ACTIVIDAD YA EXISTE"); }
             return resultado;
         }
 
@@ -74,7 +78,7 @@ namespace TP_Obligatorio_1
             if (actividad != null)
             {
                 actividades.Remove(actividad);
-                mensajeSistema(nombre, "ACTIVIDAD ELIMINADA CON EXITO");
+                mensajeSistema(nombre, " ACTIVIDAD ELIMINADA CON EXITO");
                 resultado = true;
             }
             else { mensajeSistema(nombre, "ERROR ACTIVIDAD NO ENCONTRADA"); }
@@ -82,7 +86,7 @@ namespace TP_Obligatorio_1
         }
 
 
-     
+
 
         /*
          *            SOCIOS
@@ -153,31 +157,45 @@ namespace TP_Obligatorio_1
             if (socio != null)
             {
                 socios.Remove(socio);
-                mensajeSistema(nombre, "SOCIO ELIMINADO CON EXITO");
+                mensajeSistema(nombre, "SOCIO ELIMINADO CON EXITO ");
                 resultado = true;
             }
             else { mensajeSistema(nombre, "ERROR SOCIO NO ENCONTRADO"); }
             return resultado;
         }
-        /*
-           *            INSCRIPCION
-           */
 
-        public String inscribirActividad(int id_socio, string actividad)
+
+        /*
+         *            INSCRIPCION
+         */
+
+
+
+        public void inscribirActividad(int id_socio, string actividad)
         {
-            string respuesta = "";
+            
             Actividad actividadBuscada = buscarActividad(actividad);
             Socio socioBuscado = buscarSocio(id_socio);
 
-            if (actividadBuscada != null && socioBuscado != null)
+            if (actividadBuscada == null)               // VERIFICAMOS QUE LA ACTIVIDAD EXISTA
             {
-                Console.WriteLine("eeeeyyyyyy");
-                Console.WriteLine(actividadBuscada);
-                actividadBuscada.agregarAlumno(id_socio);
-                actividadBuscada.mostrarAlumnos();
-
+                mensajeSistema("ERROR", " ACTIVIDAD NO EXISTE ");
             }
-            return respuesta;
+            else if (socioBuscado == null)              // VERIFICAMOS QUE EL SOCIO EXISTA
+            {
+                mensajeSistema("ERROR", "SOCIO NO EXISTE ");
+            }
+            else
+            {
+                // Console.WriteLine(actividadBuscada);
+                // SI LA ACTIVIDAD TIENE CUPO DISPONIBLE Y EL SOCIO NO ESTA INSCRIPTO EN 3 ACTIVIDADES, LO ANOTAMOS
+                if (actividadBuscada.chequeaCupoActividad() && socioBuscado.chequeaCupoActividad())
+                {
+                    actividadBuscada.agregarActividad(id_socio);
+                    socioBuscado.agregarActividad(actividadBuscada);
+                    mensajeSistema("OK", "INSCRIPCION EXITOSA");
+                }
+            }
         }
 
         // MENSAJE DEL SISTEMA AL USUARIO
@@ -187,10 +205,10 @@ namespace TP_Obligatorio_1
             string espacio1 = new string(' ', tam_espacio1);
             int tam_espacio2 = (70 - mensaje2.Length) / 2;
             string espacio2 = new string(' ', tam_espacio2);
-            Console.WriteLine("***********************************************************************");
+            Console.WriteLine("************************************************************************");
             Console.WriteLine("*" + espacio1 + mensaje + espacio1 + "*");
             Console.WriteLine("*" + espacio2 + mensaje2 + espacio2 + "*");
-            Console.WriteLine("***********************************************************************");
+            Console.WriteLine("************************************************************************");
             Console.WriteLine();
         }
 

@@ -9,14 +9,16 @@ namespace TP_Obligatorio_1
         // ATRIBUTOS
         private int id_socio;
         private String nombre;
-        
+        private List<Actividad> socioActividades;
+
         // CONSTRUCTOR
         public Socio(int id_socio, string nombre)
         {
             this.id_socio = id_socio;
             this.nombre = nombre;
+            this.socioActividades = new List<Actividad>();
         }
-        
+
         // SETTERS Y GETTERS
         public String getNombre()
         {
@@ -27,16 +29,63 @@ namespace TP_Obligatorio_1
             return this.id_socio;
         }
 
-        // MENSAJE DEL SISTEMA AL USUARIO
-        public void mensajeSistema(string mensaje)
+        
+        // CHEQUEAMOS CUPO DE ACTIVIDADES DISPONIBLE PARA EL SOCIO
+        public bool chequeaCupoActividad()
         {
-            int tam_espacio = (70 - mensaje.Length) / 2;
-            Console.WriteLine(tam_espacio);
-            string espacio = new string(' ', tam_espacio);
-            Console.WriteLine("***********************************************************************");
-            Console.WriteLine("*" + espacio + mensaje + espacio + "*");
-            Console.WriteLine("***********************************************************************");
+            // CHEQUEAMOS QUE HAYA CUPO DISPONIBLE
+            bool hayCupo = false;
+            if (this.socioActividades.Count < 3)
+            {
+                hayCupo = true;
+            }
+            else
+            {
+                mensajeSistema("ERROR", "TOPE DE (3) ACTIVIDADES ALCANZADO");
+            }
+            return hayCupo;
         }
+
+        public void agregarActividad(Actividad actividad)
+        {
+            this.socioActividades.Add(actividad);
+            this.listarActividades();
+        }
+
+        public void listarActividades()
+        {
+            foreach (Actividad actividad in socioActividades)
+            {
+                Console.WriteLine(actividad.ToString());    
+            }
+        }
+
+        static void PrintList(List<int> list)
+        {
+            foreach (int number in list)
+            {
+                Console.Write(number + " ");
+            }
+            Console.WriteLine();
+        }
+
+
+
+
+        // MENSAJE DEL SISTEMA AL USUARIO
+        public void mensajeSistema(string mensaje, string mensaje2)
+        {
+            int tam_espacio1 = (71 - mensaje.Length) / 2;
+            string espacio1 = new string(' ', tam_espacio1);
+            int tam_espacio2 = (71 - mensaje2.Length) / 2;
+            string espacio2 = new string(' ', tam_espacio2);
+            Console.WriteLine("************************************************************************");
+            Console.WriteLine("*" + espacio1 + mensaje + espacio1 + "*");
+            Console.WriteLine("*" + espacio2 + mensaje2 + espacio2 + "*");
+            Console.WriteLine("************************************************************************");
+            Console.WriteLine();
+        }
+
 
         // SOBRECARGA
         public override string ToString()
